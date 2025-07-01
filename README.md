@@ -17,6 +17,8 @@ To use this tool, scan item barcodes and library cards like normal with your cur
 - Click "Upload File" then "Add to offline circulation queue."
 - From there click "View pending offline circulation actions", then "Check all", then "Process."
 
+If you don't see some of these options in Koha, you may not have the necessary permissions. In that case email the file to your system administrator, or someone on your team with "Super Libarian" permissions.
+
 ## Compatability
 This tool was developed for the Chrome Web Browser on Linux Mint 21.3 Cinnamon, but should work with most browsers on most operating systems.
 
