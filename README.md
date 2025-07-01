@@ -5,7 +5,7 @@ This tool is a standalone webpage that can create a Koha offline circulation fil
 
 To install, just download kolt.html to your desktop. That's it!
 
-To use the tool, just scan item barcodes and library cards like normal with your cursor in the correct text field. This tool doesn't do payments, or hold information, as these require an internet connection to access the database. It only handles basic check-in and check-out functionality. The tool will save the data to the local browser cache until either the cache is cleared, or you click the "Clear" button. When this happens the data cannot be recovered, so make sure you have exported the data using the "Download Data" button first!
+To use the tool, just scan item barcodes and library cards like normal with your cursor in the correct text field. This tool doesn't do payments, or "holds" information, as these require an internet connection to access the database. It only handles basic check-in and check-out functionality. The tool will save the data to the local browser cache until either the cache is cleared, or you click the "Clear" button. When this happens the data cannot be recovered, so make sure you have exported the data using the "Download Data" button first!
 
 To upload the .koc file to Koha when you are back online:
 
