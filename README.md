@@ -22,8 +22,8 @@ This tool was developed for the Chrome Web Browser on Linux Mint 21.3 Cinnamon, 
 
 The following OS/Browser Combinations have been tested and found successful:
 
-Linux Mint- Google Chrome
-Linux Mint- Firefox
-Linux Ubuntu- Google Chrome
-Windows 10- Google Chrome
-Windows 10- Microsoft Edge
+- Linux Mint- Google Chrome
+- Linux Mint- Firefox
+- Linux Ubuntu- Google Chrome
+- Windows 10- Google Chrome
+- Windows 10- Microsoft Edge
