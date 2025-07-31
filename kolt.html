@@ -1,120 +1,475 @@
+<!--
+ * kolt v0.1
+ * Created by Kendall Purser
+ * Modified by Samuel Sowanick
+ * for the Bonneville County Library District
+ * and the Library Consortium of Eastern Idaho
+ *
+ * Copyright © 2025 Bonneville County Library District and the Library Consortium of Eastern Idaho
+ *
+ * Copyright © 2025 Samuel Sowanick
+ *
+ * kolt is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License.
+ *
+ * kolt is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with kolt. If not, see <https://www.gnu.org/licenses/>.
+ -->
+ 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="data:image/x-icon;base64,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" rel="icon" type="image/x-icon" />
-<title>Koha Offline Library Tool</title>
-<style type="text/css">
-/* CSS HERE */
-body {
-  margin: 0px;
-  padding: 0px;
-}
-h1, h2, h3 {
-  margin: 0px;
-  width: auto;
-  color: white;
-  background-color: #408540;
-  padding-left: 10px;
-  line-height: 50px;
-}
-p {
-  margin-left: 10px;
-}
-.card {
-  width: 500px;
-  margin: 10px auto;
-  border: 1px solid black;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koha Offline Library Tool</title>
+    <link href="data:image/x-icon;base64,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" rel="icon" type="image/x-icon" />
+    <style type="text/css">
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+        h1, h2, h3 {
+            margin: 0px;
+            width: auto;
+            color: white;
+            background-color: #408540;
+            padding-left: 10px;
+            line-height: 50px;
+        }
+        p {
+            margin-left: 10px;
+        }
+        button {
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+            border: 1px solid black;
+        }
+        button:hover {
+            background-color: #4D4D4D;
+            color: white;
+        }
+        .clear {
+            clear: both;
+        }
+        .red_t {
+            color: red;
+        }
+        .green_t {
+            color: green;
+        }
 
-}
-.copyright {
-  width: 300px; 
-  margin: 0px auto;
-  text-align: center;
-  font-size: 12px;
-}
-.clear {
-  clear: both;
-}
-.red {
-  background-color: salmon;
-}
-.red_t {
-  color: red;
-}
-.green_t {
-  color: green;
-}
-button {
-  padding: 5px;
-  border-radius: 3px;
-  cursor: pointer;
-  border: 1px solid black;
-}
-button:hover {
-  background-color: #4D4D4D;
-  color: white;
-}
-#stage {
-  width: auto;
-  height: 250px;
-  border: 1px solid #e7e7e7;
-  margin: auto;
-  overflow-y: scroll;
-  padding: 10px;
-  
-}
-</style>
+        .page-header {
+            display: flex;
+            align-items: center;
+            background-color: #408540;
+            color: white;
+            padding: 0 10px;
+            line-height: 50px;
+            margin-bottom: 10px;
+        }
+        .page-header img {
+            margin-right: 10px;
+            width: 35px;
+            height: 35px;
+        }
+        .page-header h1 {
+            margin: 0;
+            background-color: transparent;
+            color: white;
+            flex-grow: 1;
+        }
+
+        .main-content-wrapper {
+            display: flex;
+            flex-grow: 1; 
+            width: 100%;
+            margin: 0;
+            box-sizing: border-box;
+            overflow: hidden; 
+        }
+
+        #koha-panel {
+            flex: 0 0 40%; 
+            min-width: 300px;
+            box-sizing: border-box;
+            padding: 10px;
+            overflow: auto; 
+        }
+
+        #borrower-panel {
+            flex: 1 1 auto; 
+            min-width: 250px;
+            box-sizing: border-box;
+            padding: 10px;
+            border-left: 1px solid #ccc; 
+            display: flex;
+            flex-direction: column;
+            overflow: auto; 
+        }
+
+        .resizer {
+            width: 8px; 
+            cursor: ew-resize; 
+            background-color: #ccc; 
+            flex-shrink: 0; 
+        }
+
+        .resizer:hover {
+            background-color: #999; 
+        }
+
+        .resizer.is-dragging {
+            background-color: #666;
+        }
+
+        body.no-select {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-content-wrapper {
+                flex-direction: column;
+            }
+            #koha-panel, #borrower-panel {
+                flex: none;
+                width: 100%;
+                border-left: none;
+            }
+            #borrower-panel {
+                border-top: 1px solid #ccc;
+            }
+            .resizer {
+                display: none; 
+            }
+        }
+
+        #koha-panel .card {
+            width: 100%;
+            margin: 10px 0;
+            box-sizing: border-box;
+        }
+        #koha-panel #stage {
+            width: auto;
+            height: 250px;
+            border: 1px solid #e7e7e7;
+            margin: auto;
+            overflow-y: scroll;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #borrower-header-static {
+            display: flex;
+            align-items: center;
+            background-color: #408540;
+            color: white;
+            padding-left: 10px;
+            line-height: 50px;
+            margin-bottom: 10px;
+            cursor: default;
+        }
+        #borrower-header-static h1 {
+            margin: 0;
+            background-color: transparent;
+            color: white;
+            flex-grow: 1;
+        }
+
+        .borrower-content-visible {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            background-color: #f8f8f8;
+        }
+
+        .scrollable-area {
+            flex-grow: 1;
+            width: auto;
+            border: 1px solid #e7e7e7;
+            margin: 10px;
+            overflow-y: scroll;
+            overflow-x: auto;
+            padding: 10px;
+            box-sizing: border-box;
+            min-height: 150px;
+            height: 0;
+        }
+
+        input[type="file"], input[type="text"], input[type="tel"] { 
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        textarea {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+            resize: vertical;
+        }
+
+        #koha-panel input[type="tel"] {
+            background-color: #f8f8f8;
+        }
+
+        #loadingIndicator {
+            text-align: center;
+            color: #408540;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #loadingIndicator svg {
+            animation: spin 1s linear infinite;
+            height: 20px;
+            width: 20px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Table specific styling */
+        .query-result-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+            text-align: left;
+            table-layout: fixed;
+        }
+        .query-result-table th, .query-result-table td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            word-wrap: break-word;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .query-result-table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .query-result-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .query-result-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        /* Error Message Styling */
+        .red {
+            border: 1px solid red;
+        }
+        #errorMessage {
+            padding: 10px;
+            margin: 10px;
+            box-sizing: border-box;
+        }
+
+        .copyright {
+            width: 300px;
+            margin: 0px auto;
+            text-align: center;
+            font-size: 12px;
+            padding-top: 20px;
+        }
+
+        .borrower-search-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-end;
+            padding: 10px;
+        }
+        .borrower-search-inputs input {
+            flex-grow: 1;
+            min-width: 150px;
+            margin: 0;
+        }
+        .borrower-search-inputs button {
+            padding: 5px 15px;
+            height: 31px;
+            box-sizing: border-box;
+            margin: 0;
+        }
+
+        #clearResultsButton {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .main-content-wrapper {
+                flex-direction: column;
+            }
+            #koha-panel, #borrower-panel {
+                flex: none;
+                width: 100%;
+                border-left: none;
+            }
+            #borrower-panel {
+                border-top: 1px solid #ccc;
+            }
+            .resizer {
+                display: none; 
+            }
+        }
+
+        #customModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        #customModal > div {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        #customModal button {
+            padding: 8px 15px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #customModal button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
 </head>
 <body>
-  <img alt="Koha logo" style="float: left; width: 35px; margin: 8px;" src="data:image/x-icon;base64,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" />
-  
-<h1>Koha Offline Library Tool</h1>
+  <h1><img alt="Koha logo" style="float: left; width: 35px; margin: 8px;" src="data:image/x-icon;base64,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" />Koha Offline Library Tool</h1>
 
-  <div class="card">
-    <h2>Checkin</h2>
-    <p>
-      Barcode: <input type="tel" id="bar_ckin" onchange="app.checkin()" />
-    </p>
-    <h2>Checkout</h2>
-    <p>
-      Patron Card: <input type="tel" id="pat_card" /><br /><br />
-      Barcode: <input type="tel" id="bar_ckout"  onchange="app.checkout()"/><br /><br />
-    </p>
-  </div>
-  <div class="card">
-    <h2>Results</h2>
-    <div id="stage"></div>
-  </div>
-  <div class="card" style="border:0px;">
-    <button onclick="app.save()">Save</button>
-    <button onclick="app.download()">Download data (.koc)</button>
-    <button onclick="app.clear()"class="red">Clear</button><br /><br />
-    <span style="clear: both; font-size: 10px;">*** To upload the .koc file:
-    <ul>
-      <li>Log-in to Koha through the staff interface and click on "Circulation."
-      </li><li>Click on "Upload offline circulation file (.koc)" at the bottom of the screen.
-      </li><li>Select your file using the "Choose File" button. 
-      </li><li>Click "Upload File" then "Add to offline circulation queue."
-      </li><li>From there click "View pending offline circulation actions", then "Check all", then "Process."</li></ul></span><br />
-  </div>
+    <div class="main-content-wrapper">
+        <div id="koha-panel">
+            <div class="card">
+                <h2>Checkin</h2>
+                <p>
+                    Barcode: <input type="tel" id="bar_ckin" onchange="app.checkin()" />
+                </p>
+                <h2>Checkout</h2>
+                <p>
+                    Patron Card: <input type="tel" id="pat_card" /><br /><br />
+                    Barcode: <input type="tel" id="bar_ckout" onchange="app.checkout()" /><br /><br />
+                </p>
+            </div>
+            <div class="card">
+                <h2>Results</h2>
+                <div id="stage"></div>
+            </div>
+            <div class="card" style="border:0px;">
+                <button onclick="app.save()">Save</button>
+                <button onclick="app.download()">Download data (.koc)</button>
+                <button onclick="app.clear()" class="red">Clear</button><br /><br />
+                <span style="clear: both; font-size: 16px;">*** To upload the .koc file:
+                <ul>
+                    <li>Log-in to Koha through the staff interface and click on "Circulation."
+                    </li><li>Click on "Upload offline circulation file (.koc)" at the bottom of the screen.
+                    </li><li>Select your file using the "Choose File" button.
+                    </li><li>Click "Upload File" then "Add to offline circulation queue."
+                    </li><li>From there click "View pending offline circulation actions", then "Check all", then "Process."</li></ul></span><br />
+            </div>
+        </div>
 
-<hr class="clear" />
-<div class="copyright">
-kolt v0.1 created by Kendall Purser<br />
-for the <a href="bcld.org" target="_blank">Bonneville County Library District</a><br /> 
-and the <a href="https://lcei.lili.org/" target="_blank">Library Consortium of Eastern Idaho</a><br />
-Copyright &copy; 2025
-</div>
-</br />
-</br />
-<script>
-// App here
+        <div class="resizer" id="dragMe"></div>
 
-// .koc file spec: https://wiki.koha-community.org/wiki/Koha_offline_circulation_file_format
+        <div id="borrower-panel">
+            <div id="borrower-header-static">
+                <h1>Borrower Search</h1>
+            </div>
+            <div class="borrower-content-visible">
+                <div style="padding: 10px;">
+                    <p>Upload your .db file:</p>
+                    <input type="file" id="dbFile" accept=".db, .sqlite, .sqlite3">
+                    <p id="dbStatusMessage" style="margin-left: 10px; font-weight: bold; color: #555;">No database loaded.</p>
+                </div>
 
-const app = {
+                <div id="loadingIndicator" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="4">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Processing database...
+                </div>
+
+                <div style="padding: 10px; border-top: 1px solid black; margin-top: 10px;">
+                    <p>Borrower search:</p>
+                    <div class="borrower-search-inputs">
+                        <input type="text" id="borrowerCardNumberInput" placeholder="Card Number">
+                        <input type="text" id="borrowerFirstNameInput" placeholder="First Name">
+                        <input type="text" id="borrowerSurnameInput" placeholder="Last Name">
+                        <button id="runBorrowerQueryButton" disabled>Get Borrower Info</button>
+                    </div>
+                </div>
+
+                <div class="scrollable-area" id="queryResultContainer" style="display: none;">
+                    <h3>Result:</h3>
+                    <div id="queryResultOutput"></div>
+                    <p id="queryResultEmptyMessage" style="display: none;">Oops. Can't find any patrons with that name. ¯\_(ツ)_/¯ </p>
+                </div>
+
+                <button id="clearResultsButton" style="display: none;">Clear Search Results</button>
+
+                <div id="errorMessage" class="red" style="display: none; padding: 10px; margin-top: 10px;">
+                    <p class="red_t" style="font-weight: bold;">Error:</p>
+                    <p id="errorText" class="red_t"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="clear" />
+		<hr style="width:100%;text-align:left;margin-left:0"><div class="copyright">
+		kolt v0.1 created by Kendall Purser<br />
+		for the <a href="bcld.org" target="_blank">Bonneville County Library District</a><br /> 
+		and the <a href="https://lcei.lili.org/" target="_blank">Library Consortium of Eastern Idaho</a><br />
+		Modified by Sam Sowanick<br />
+		Copyright &copy; 2025
+	</div>
+    </br />
+    </br />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script>
+  const app = {
   header: "Version=1.0\tGenerator=kolt\tGeneratorVersion=0.1\n",
   data: "",
   data2: [],
@@ -174,32 +529,447 @@ const app = {
     document.body.removeChild(a);
     
   },
-  clear: function () {
-    if(confirm("Delete local data?")){
-      localStorage.removeItem("kolt_data");
-      app.data = app.header;
-      alert("Local data deleted.");
-    } else { alert("Canceled."); }
-  },
-  stage: "",
-  ui: function () {
-    // update results every second
-    app.stage = app.data;
-    while (app.stage.indexOf("\n") != -1) {
-      app.stage = app.stage.replace("\n", "<br />");      
-    }
-    while (app.stage.indexOf("\treturn\t") != -1) {
-      app.stage = app.stage.replace("\treturn\t", "<span class='green_t'> return </span>");   
-    }
-    while (app.stage.indexOf("\tissue\t") != -1) {
-      app.stage = app.stage.replace("\tissue\t", "<span class='red_t'> issue </span>");  
-    }
-    app.get("stage").innerHTML = app.stage;
-    app.save();
-  }
-};
-app.init();
+            clear: function () {
+                showCustomConfirmation("Delete local data?", () => {
+                    localStorage.removeItem("kolt_data");
+                    app.data = app.header;
+                    showCustomAlert("Local data deleted.");
+                }, () => {
+                    showCustomAlert("Canceled.");
+                });
+            },
+            stage: "",
+            ui: function () {
+                app.stage = app.data;
+                while (app.stage.indexOf("\n") != -1) {
+                    app.stage = app.stage.replace("\n", "<br />");
+                }
+                while (app.stage.indexOf("\treturn\t") != -1) {
+                    app.stage = app.stage.replace("\treturn\t", "<span class='green_t'> return </span>");
+                }
+                while (app.stage.indexOf("\tissue\t") != -1) {
+                    app.stage = app.stage.replace("\tissue\t", "<span class='red_t'> issue </span>");
+                }
+                app.get("stage").innerHTML = app.stage;
+                app.save();
+            }
+        };
 
-</script>
+        function createModal(message, type = 'alert', onConfirm = null, onCancel = null) {
+            const existingModal = document.getElementById('customModal');
+            if (existingModal) {
+                existingModal.remove();
+            }
+
+            const modal = document.createElement('div');
+            modal.id = 'customModal';
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+            `;
+
+            const modalContent = document.createElement('div');
+            modalContent.style.cssText = `
+                background-color: white;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+                text-align: center;
+                max-width: 400px;
+                width: 90%;
+            `;
+
+            const messagePara = document.createElement('p');
+            messagePara.textContent = message;
+            messagePara.style.marginBottom = '20px';
+            modalContent.appendChild(messagePara);
+
+            const buttonContainer = document.createElement('div');
+            buttonContainer.style.display = 'flex';
+            buttonContainer.style.justifyContent = 'center';
+            buttonContainer.style.gap = '10px';
+
+            if (type === 'alert') {
+                const okButton = document.createElement('button');
+                okButton.textContent = 'OK';
+                okButton.onclick = () => modal.remove();
+                buttonContainer.appendChild(okButton);
+            } else if (type === 'confirm') {
+                const confirmButton = document.createElement('button');
+                confirmButton.textContent = 'Confirm';
+                confirmButton.onclick = () => {
+                    if (onConfirm) onConfirm();
+                    modal.remove();
+                };
+                buttonContainer.appendChild(confirmButton);
+
+                const cancelButton = document.createElement('button');
+                cancelButton.textContent = 'Cancel';
+                cancelButton.onclick = () => {
+                    if (onCancel) onCancel();
+                    modal.remove();
+                };
+                buttonContainer.appendChild(cancelButton);
+            }
+
+            modalContent.appendChild(buttonContainer);
+            modal.appendChild(modalContent);
+            document.body.appendChild(modal);
+        }
+
+        function showCustomAlert(message) {
+            createModal(message, 'alert');
+        }
+
+        function showCustomConfirmation(message, onConfirm, onCancel) {
+            createModal(message, 'confirm', onConfirm, onCancel);
+        }
+
+
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Initialize Koha app after DOM is loaded
+            app.init();
+
+            // --- Resizable Panels Logic ---
+            const kohaPanel = document.getElementById('koha-panel');
+            const borrowerPanel = document.getElementById('borrower-panel');
+            const resizer = document.getElementById('dragMe');
+            let isDragging = false;
+
+            resizer.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                document.body.classList.add('no-select'); // Prevent text selection
+                resizer.classList.add('is-dragging'); // Add dragging class for styling
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+
+                // Calculate new width for kohaPanel based on mouse position
+                const containerWidth = resizer.parentElement.offsetWidth;
+                const newKohaPanelWidth = e.clientX - kohaPanel.getBoundingClientRect().left;
+
+                // Get min-width from CSS
+                const minKohaWidth = parseFloat(window.getComputedStyle(kohaPanel).minWidth);
+                const minBorrowerWidth = parseFloat(window.getComputedStyle(borrowerPanel).minWidth);
+
+                // Calculate max allowed width for kohaPanel to respect minBorrowerWidth
+                // Subtract resizer width from container width
+                const maxKohaWidth = containerWidth - minBorrowerWidth - resizer.offsetWidth;
+
+                // Ensure kohaPanel stays within its min/max bounds
+                let finalWidth = Math.max(minKohaWidth, newKohaPanelWidth);
+                finalWidth = Math.min(maxKohaWidth, finalWidth);
+
+                // Apply the new width to the kohaPanel using flex-basis
+                kohaPanel.style.flexBasis = `${finalWidth}px`;
+                // borrowerPanel will automatically adjust due to flex: 1 1 auto;
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                document.body.classList.remove('no-select'); // Re-enable text selection
+                resizer.classList.remove('is-dragging'); // Remove dragging class
+            });
+
+            // --- End Resizable Panels Logic ---
+
+            const fileInput = document.getElementById('dbFile');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const errorMessage = document.getElementById('errorMessage');
+            const errorText = document.getElementById('errorText');
+            const queryResultContainer = document.getElementById('queryResultContainer');
+            const queryResultOutput = document.getElementById('queryResultOutput');
+            const queryResultEmptyMessage = document.getElementById('queryResultEmptyMessage');
+            const dbStatusMessage = document.getElementById('dbStatusMessage');
+
+            const borrowerCardNumberInput = document.getElementById('borrowerCardNumberInput');
+            const borrowerFirstNameInput = document.getElementById('borrowerFirstNameInput');
+            const borrowerSurnameInput = document.getElementById('borrowerSurnameInput');
+            const runBorrowerQueryButton = document.getElementById('runBorrowerQueryButton');
+            const clearResultsButton = document.getElementById('clearResultsButton');
+
+            let SQL; // This will hold the sql.js database object
+            let loadedDb = null;
+            const DB_NAME = 'BorrowerLookupDB';
+            const DB_VERSION = 1;
+            const OBJECT_STORE_NAME = 'dbFiles';
+            const DB_FILE_KEY = 'borrowerDbFile';
+
+            // Function to open IndexedDB and get a transaction
+            function openIndexedDB() {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        if (!db.objectStoreNames.contains(OBJECT_STORE_NAME)) {
+                            db.createObjectStore(OBJECT_STORE_NAME);
+                        }
+                    };
+
+                    request.onsuccess = (event) => {
+                        resolve(event.target.result);
+                    };
+
+                    request.onerror = (event) => {
+                        console.error("IndexedDB error:", event.target.errorCode);
+                        reject("Failed to open IndexedDB.");
+                    };
+                });
+            }
+
+            // Function to save ArrayBuffer to IndexedDB
+            async function saveDbToIndexedDB(arrayBuffer) {
+                try {
+                    const db = await openIndexedDB();
+                    const transaction = db.transaction([OBJECT_STORE_NAME], 'readwrite');
+                    const store = transaction.objectStore(OBJECT_STORE_NAME);
+                    const request = store.put(arrayBuffer, DB_FILE_KEY); // Overwrite if key exists
+
+                    return new Promise((resolve, reject) => {
+                        request.onsuccess = () => resolve();
+                        request.onerror = (event) => reject(event.target.error);
+                    });
+                } catch (error) {
+                    throw new Error(`Failed to save DB to IndexedDB: ${error}`);
+                }
+            }
+
+            // Function to load ArrayBuffer from IndexedDB
+            async function loadDbFromIndexedDB() {
+                try {
+                    const db = await openIndexedDB();
+                    const transaction = db.transaction([OBJECT_STORE_NAME], 'readonly');
+                    const store = transaction.objectStore(OBJECT_STORE_NAME);
+                    const request = store.get(DB_FILE_KEY);
+
+                    return new Promise((resolve, reject) => {
+                        request.onsuccess = (event) => {
+                            resolve(event.target.result); // This will be the ArrayBuffer or undefined
+                        };
+                        request.onerror = (event) => reject(event.target.error);
+                    });
+                } catch (error) {
+                    throw new Error(`Failed to load DB from IndexedDB: ${error}`);
+                }
+            }
+
+            // Centralized function to load and parse DB
+            async function attemptLoadDb(fileArrayBuffer = null) {
+                errorMessage.style.display = 'none';
+                loadingIndicator.style.display = 'flex';
+                queryResultContainer.style.display = 'none';
+                queryResultOutput.innerHTML = '';
+                queryResultEmptyMessage.style.display = 'none';
+                runBorrowerQueryButton.disabled = true;
+                clearResultsButton.style.display = 'none'; // Hide clear button on new load/attempt
+
+                try {
+                    // Dynamically load sql-wasm.js if not already loaded
+                    if (typeof initSqlJs === 'undefined') {
+                        await new Promise((resolve, reject) => {
+                            const script = document.createElement('script');
+                            script.src = "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js";
+                            script.onload = resolve;
+                            script.onerror = reject;
+                            document.head.appendChild(script);
+                        });
+                    }
+
+                    // Ensure SQL object is initialized
+                    if (!SQL) {
+                        SQL = await initSqlJs({
+                            locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                        });
+                        console.log("sql.js initialized successfully.");
+                    }
+
+                    let dbArrayBuffer = fileArrayBuffer;
+
+                    if (!dbArrayBuffer) {
+                        dbStatusMessage.textContent = "Attempting to load database from browser storage...";
+                        dbStatusMessage.style.color = '#555';
+                        dbArrayBuffer = await loadDbFromIndexedDB();
+                    }
+
+                    if (dbArrayBuffer) {
+                        const Uints = new Uint8Array(dbArrayBuffer);
+                        loadedDb = new SQL.Database(Uints);
+
+                        if (fileArrayBuffer) { // If it was a new upload, save it
+                            await saveDbToIndexedDB(fileArrayBuffer);
+                            dbStatusMessage.textContent = "Database uploaded and loaded successfully!";
+                        } else {
+                            dbStatusMessage.textContent = "Database loaded from browser storage.";
+                        }
+                        dbStatusMessage.style.color = 'green';
+                        runBorrowerQueryButton.disabled = false;
+                        console.log("Database successfully loaded and parsed.");
+                    } else {
+                        dbStatusMessage.textContent = "No database loaded. Please upload a .db file.";
+                        dbStatusMessage.style.color = '#555';
+                        runBorrowerQueryButton.disabled = true;
+                    }
+                } catch (e) {
+                    console.error("Database load error:", e);
+                    displayError("Failed to load or process database: " + e.message);
+                    dbStatusMessage.textContent = "Error loading database.";
+                    dbStatusMessage.style.color = 'red';
+                    runBorrowerQueryButton.disabled = true;
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                }
+            }
+
+            // Display Error Message
+            function displayError(message) {
+                errorMessage.style.display = 'block';
+                errorText.textContent = message;
+            }
+
+            // Function to execute a borrower query
+            function executeBorrowerQuery() {
+                queryResultOutput.innerHTML = '';
+                queryResultEmptyMessage.style.display = 'none';
+                errorMessage.style.display = 'none';
+                clearResultsButton.style.display = 'block';
+
+                if (!loadedDb) {
+                    displayError("No database loaded. Please upload a .db file first.");
+                    return;
+                }
+
+                const cardNumber = borrowerCardNumberInput.value.trim();
+                const firstName = borrowerFirstNameInput.value.trim();
+                const surname = borrowerSurnameInput.value.trim();
+
+                if (!cardNumber && !firstName && !surname) {
+                    displayError("Please enter at least one search criterion (Card Number, First Name, or Surname).");
+                    return;
+                }
+
+                // Modified query to concatenate firstname and surname
+                let query = "SELECT cardnumber, firstname || ' ' || surname AS name, phone, address||' '||city as address, dateofbirth, IFNULL(total_fines, '0') as fines FROM borrowers WHERE 1=1";
+                const params = [];
+
+                if (cardNumber) {
+                    query += " AND cardnumber LIKE ?";
+                    params.push(`%${cardNumber}%`);
+                }
+                if (firstName) {
+                    query += " AND firstname LIKE ?";
+                    params.push(`%${firstName}%`);
+                }
+                if (surname) {
+                    query += " AND surname LIKE ?";
+                    params.push(`%${surname}%`);
+                }
+
+                query += " LIMIT 100;"; // Limit results to prevent overwhelming the browser
+
+                try {
+                    const res = loadedDb.exec(query, params);
+
+                    if (res.length > 0) {
+                        const table = document.createElement('table');
+                        table.classList.add('query-result-table');
+                        const thead = document.createElement('thead');
+                        const tbody = document.createElement('tbody');
+
+                        // Create table header
+                        const headerRow = document.createElement('tr');
+                        res[0].columns.forEach(colName => {
+                            const th = document.createElement('th');
+                            th.textContent = colName;
+                            headerRow.appendChild(th);
+                        });
+                        thead.appendChild(headerRow);
+                        table.appendChild(thead);
+
+                        // Populate table body
+                        res[0].values.forEach(row => {
+                            const tr = document.createElement('tr');
+                            row.forEach(cell => {
+                                const td = document.createElement('td');
+                                td.textContent = cell;
+                                tr.appendChild(td);
+                            });
+                            tbody.appendChild(tr);
+                        });
+                        table.appendChild(tbody);
+                        queryResultOutput.appendChild(table);
+                        queryResultContainer.style.display = 'block';
+                    } else {
+                        queryResultEmptyMessage.style.display = 'block';
+                        queryResultContainer.style.display = 'block';
+                    }
+                } catch (e) {
+                    console.error("SQL error:", e);
+                    displayError("An SQL error occurred: " + e.message);
+                }
+            }
+
+            // Event Listeners
+            fileInput.addEventListener('change', (event) => {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = async (e) => {
+                        await attemptLoadDb(e.target.result);
+                    };
+                    reader.onerror = (e) => {
+                        console.error("File reading error:", e);
+                        displayError("Error reading file: " + e.message);
+                    };
+                    reader.readAsArrayBuffer(file);
+                }
+            });
+
+            runBorrowerQueryButton.addEventListener('click', executeBorrowerQuery); 
+
+			borrowerFirstNameInput.addEventListener('keydown', function(event) {
+			if (event.key === 'Enter') {			
+				executeBorrowerQuery();
+				}
+			});
+
+			borrowerSurnameInput.addEventListener('keydown', function(event) {
+			if (event.key === 'Enter') {			
+				executeBorrowerQuery();
+				}
+			});
+			
+			borrowerCardNumberInput.addEventListener('keydown', function(event) {
+			if (event.key === 'Enter') {			
+				executeBorrowerQuery();
+				}
+			});
+
+            clearResultsButton.addEventListener('click', () => {
+                queryResultOutput.innerHTML = '';
+                queryResultEmptyMessage.style.display = 'none';
+                queryResultContainer.style.display = 'none';
+                clearResultsButton.style.display = 'none';
+                errorMessage.style.display = 'none';
+
+                // Clear input fields
+                borrowerCardNumberInput.value = '';
+                borrowerFirstNameInput.value = '';
+                borrowerSurnameInput.value = '';
+            });
+
+            // Attempt to load DB from IndexedDB on page load
+            await attemptLoadDb();
+        });
+    </script>
 </body>
 </html>
